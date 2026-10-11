@@ -1,87 +1,263 @@
+<div align="center">
+
 # VoxelPool Explorer
 
-**A portable, CPU-first research lab for voxel-pooling workloads.** Explore how tensor shape and destination collisions affect accumulation strategies, compare correctness and timing, inspect voxel occupancy, and export reproducible experiment records.
+### An interactive research lab for voxel-pooling performance, correctness, and workload-aware strategy selection.
 
-> **Research honesty:** This starter runs local NumPy/Python implementations. Its timings are CPU measurements for this environment—not Quadric Chimera, CUDA, or accelerator results. It does not include a Quadric CCL kernel or claim a speedup on Quadric hardware. A Quadric backend should only be added after access to the official SDK/tutorial and a verified target-specific implementation.
+<p>
+  <img src="docs/images/ui-overview.gif" alt="Animated overview transitioning between screenshots of the VoxelPool Explorer dashboard" width="900" />
+</p>
 
-## What is included
+<p>
+  <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white" alt="Python 3.10+" />
+  <img src="https://img.shields.io/badge/React-TypeScript-3178C6?logo=typescript&logoColor=white" alt="React and TypeScript" />
+  <img src="https://img.shields.io/badge/API-FastAPI-009688?logo=fastapi&logoColor=white" alt="FastAPI" />
+  <img src="https://img.shields.io/badge/Compute-CPU%20only-555555" alt="CPU only" />
+  <img src="https://img.shields.io/badge/Status-Research%20prototype-orange" alt="Research prototype" />
+</p>
 
-- Interactive React + Vite + TypeScript dashboard.
-- FastAPI backend with a portable voxel-pooling reference and three candidate strategies:
-  - `python_reference`: simple sequential reference.
-  - `numpy_add_at`: vectorized scatter accumulation using `numpy.add.at`.
-  - `sort_segmented`: sort by destination and reduce each occupied segment.
-- Workload controls for point count, feature channels, grid size, and destination distribution (`uniform`, `hotspot`, `unique`).
-- Correctness checks before performance results are accepted.
-- Repeated timing measurements, median latency, speedup ratios, and per-strategy status.
-- Live seeded occupancy preview that updates as workload parameters change, without timing the benchmark.
-- Browser-persisted experiment history, experiment JSON export, and CSV export generated from local history.
-- Environment metadata (Python, NumPy, OS and machine architecture) attached to each experiment.
-- Occupancy visualization, experiment details, methodology notes, and API health status.
-- API health endpoint and tests.
+<p>
+  <a href="#quick-start">Quick start</a> ·
+  <a href="#features">Features</a> ·
+  <a href="#research-question">Research question</a> ·
+  <a href="#methodology">Methodology</a> ·
+  <a href="#reproducibility">Reproducibility</a> ·
+  <a href="DEPLOYMENT.md">Deployment</a>
+</p>
 
-## Requirements
+**VoxelPool Explorer turns voxel-pooling experiments into something you can inspect, compare, and reproduce.**
 
-- Python 3.10+ (3.11 recommended)
-- Node.js 18+ (20+ recommended)
-- Internet access for the first install, so Python and npm dependencies can be installed
+</div>
+
+---
+
+## At a glance
+
+VoxelPool Explorer is a CPU-first research prototype for exploring how workload characteristics affect the behavior of voxel-pooling accumulation strategies. It combines an interactive web dashboard with a Python benchmarking API so users can configure workloads, inspect destination-voxel occupancy, compare implementations, and export experiment records.
+
+The project is designed around a simple principle: **a performance result is useful only when the output is correct and the experiment can be understood.**
+
+> **Research scope:** The current implementation measures local Python/NumPy CPU strategies. It does **not** contain a verified Quadric CCL kernel, CUDA kernel, or accelerator backend. Do not interpret its measurements as GPU, NPU, or Quadric hardware results.
+
+## Product preview
+
+### Dashboard
+
+![VoxelPool Explorer dashboard showing workload controls and voxel occupancy visualization](docs/images/dashboard-overview.png)
+
+### Experiment and analysis view
+
+![VoxelPool Explorer experiment view](docs/images/experiment-view.png)
+
+> The GIF above is an animated transition between screenshots of the actual project UI, not a screen recording of a benchmark running. Replace it with a short browser recording when you capture a real end-to-end workflow.
+
+## Why build this?
+
+Voxel pooling maps point or feature data to discrete voxel destinations and accumulates values that share a destination. The best implementation can depend on factors such as input size, feature channels, grid dimensions, destination occupancy, and collision patterns.
+
+A single benchmark on one input cannot explain those trade-offs. VoxelPool Explorer provides a place to vary workload properties systematically, check correctness, collect timings, and investigate where implementation performance changes.
+
+The longer-term research question is whether measurable workload features can help predict which implementation is likely to perform best on a previously unseen workload. This is a **hypothesis to test**, not a claim that the current prototype has solved the problem.
+
+## Features
+
+- **Interactive workload controls** for point count, feature channels, grid dimensions, distribution pattern, repetition count, and random seed.
+- **Voxel occupancy preview** that helps visualize how points map to destination voxels.
+- **Multiple CPU strategies** that implement the same basic accumulation task using different approaches.
+- **Correctness-gated timing** so a candidate that fails comparison against the reference is not treated as a valid performance winner.
+- **Repeated measurements** with summary statistics to make timing variability visible.
+- **Workload sweeps and performance landscape** for exploring multiple configurations rather than relying on one hand-picked case.
+- **Workload-aware strategy-selection experiment** with held-out evaluation against a fixed-strategy baseline. Results are exploratory and should be validated across more splits and workload families.
+- **Experiment exports** in machine-readable formats for analysis outside the dashboard.
+- **Research report and notes** documenting the question, experimental approach, and limitations.
+- **FastAPI backend and automated tests** for the benchmark logic.
+
+## How it works
+
+```mermaid
+flowchart TD
+    A[Configure workload] --> B[Generate seeded inputs]
+    B --> C[Run reference implementation]
+    C --> D[Run candidate strategies]
+    D --> E{Correctness checks pass?}
+    E -- No --> F[Record failure; exclude timing as a valid win]
+    E -- Yes --> G[Collect repeated timing samples]
+    G --> H[Summarize latency and workload features]
+    H --> I[Visualize results and compare strategies]
+    I --> J[Export experiment bundle and report]
+```
+
+## Strategies included
+
+| Strategy | What it does | Interpretation |
+|---|---|---|
+| `python_reference` | A simple sequential reference implementation | Useful for understandable reference behavior; not a competitive optimized baseline. |
+| `numpy_add_at` | Uses NumPy scatter-style accumulation | Executes much of the work inside compiled NumPy code. |
+| `sort_segmented` | Sorts by destination and reduces values in destination segments | Sorting adds overhead; whether it pays off depends on the workload. |
+
+These strategies are educational CPU implementations. Their relative performance can change with input shape, collision pattern, NumPy version, processor, and system load.
+
+## Quick start
+
+### Requirements
+
+- Python 3.10 or newer
+- Node.js 18 or newer (Node.js 20+ recommended)
+- npm
+- Internet access for the first dependency installation
 
 No GPU is required.
 
-## Quick start (Windows)
+### Windows
 
-1. Extract the ZIP.
-2. Open the extracted `voxelpool-explorer` folder.
+1. Download or clone the repository.
+2. Open the project root folder.
 3. Double-click `start_windows.bat`.
-4. Wait for both services to start. The dashboard opens at `http://localhost:5173`.
+4. Wait for the backend and frontend to start.
+5. Open [http://localhost:5173](http://localhost:5173).
 
-If the browser does not open automatically, visit `http://localhost:5173`.
-The API runs at `http://127.0.0.1:8000`; interactive API documentation is at `http://127.0.0.1:8000/docs`. Workload settings, the current result, and the most recent 25 experiments persist in that browser profile. Export JSON/CSV backups for sharing or long-term storage; the server API lookup cache itself remains in memory.
+The API is available at [http://127.0.0.1:8000](http://127.0.0.1:8000), and interactive API documentation is at [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs).
 
-### Manual start (Windows PowerShell)
+### Manual setup
 
-Terminal 1 — API:
+**Terminal 1 — backend** (from the repository root):
 
-```powershell
-cd backend
-py -m venv .venv
-.\.venv\Scripts\Activate.ps1
-python -m pip install -r requirements.txt
-uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
+```bash
+python -m venv .venv
 ```
 
-Terminal 2 — frontend:
+Activate the environment, then install and run the API:
 
-```powershell
+```bash
+# Windows PowerShell
+.venv\Scripts\Activate.ps1
+python -m pip install -r backend/requirements.txt
+python -m uvicorn app.main:app --app-dir backend --reload --host 127.0.0.1 --port 8000
+```
+
+```bash
+# macOS / Linux
+source .venv/bin/activate
+python -m pip install -r backend/requirements.txt
+python -m uvicorn app.main:app --app-dir backend --reload --host 127.0.0.1 --port 8000
+```
+
+**Terminal 2 — frontend** (from the repository root):
+
+```bash
 cd frontend
 npm install
 npm run dev
 ```
 
-### macOS / Linux
+Open the local URL printed by Vite, normally `http://localhost:5173`.
 
-Run `bash start_unix.sh`, or start the backend and frontend using the manual commands in `start_unix.sh`.
+## Run the tests
 
-## Run tests
-
-From the project root:
+From the repository root:
 
 ```bash
 python -m pip install -r backend/requirements.txt
-cd backend
+python -m unittest discover -s backend/tests -v
+```
+
+If you are working from inside `backend/`, use:
+
+```bash
 python -m unittest discover -s tests -v
 ```
 
-## API
+## Research question
 
-- `GET /api/health` — service status and active measurement backend.
-- `GET /api/defaults` — default workload settings.
-- `POST /api/preview` — generate the current occupancy preview without benchmarking.
-- `POST /api/experiment` — run a correctness-gated CPU experiment.
-- `GET /api/workload/{workload_id}` — inspect a saved in-memory workload result.
-- `POST /api/export/csv` — export experiment summary rows as CSV.
+**Can workload metadata help predict which voxel-pooling accumulation strategy will perform best on an unseen workload?**
 
-Example request:
+Potential predictors include:
+
+- Number of input points
+- Feature-channel count
+- Voxel-grid dimensions and output size
+- Occupancy and destination-collision statistics
+- Distribution pattern and other workload descriptors
+
+The selection experiment should be evaluated on held-out workload configurations and compared with simple baselines, including always choosing one fixed strategy. A useful evaluation reports not only selection accuracy but also performance regret: how much slower the selected strategy is than the best measured strategy for that workload.
+
+### What would count as evidence?
+
+1. Define the workload families and evaluation protocol before examining test results.
+2. Keep training and held-out configurations separate; group related seeds/configurations to reduce leakage.
+3. Compare the selector against simple, transparent baselines.
+4. Repeat the evaluation across multiple splits and workload families.
+5. Report uncertainty, failed cases, and negative results as well as positive findings.
+
+The current selector is exploratory. One split or a small held-out set is not enough to establish generalization.
+
+## Methodology
+
+A typical benchmark run follows these steps:
+
+1. Generate deterministic inputs from a recorded configuration and seed.
+2. Run the reference implementation to obtain expected output.
+3. Run each candidate implementation on the same input.
+4. Compare candidate output against the reference using the configured numerical tolerances.
+5. Exclude incorrect candidates from valid performance comparisons.
+6. Warm up and collect repeated timing samples for eligible candidates.
+7. Summarize timings and attach workload/environment metadata.
+8. Export the results so they can be analyzed independently.
+
+Floating-point addition is order-sensitive. Different accumulation orders can produce small numerical differences, so tolerances must be explicit and appropriate to the intended operator. The current exploratory tolerance is not a substitute for a target-specific numerical contract.
+
+### Interpreting results responsibly
+
+- The sequential Python reference is primarily for clarity and correctness, not a fair optimized performance baseline.
+- A speedup over the sequential reference should not be described as a general kernel speedup.
+- Small timing differences may be noise; inspect repeated samples and variability.
+- Results from one machine do not automatically generalize to other machines or accelerators.
+- Synthetic workload patterns help isolate behavior but do not replace application-derived traces.
+
+## Reproducibility and artifacts
+
+The repository includes research notes and experiment artifacts where available. Before publishing a result, preserve:
+
+- The workload configuration and random seed
+- Strategy identifiers and correctness outcomes
+- Raw timing samples and summary statistics
+- Python, NumPy, operating-system, and machine metadata when available
+- The exact code revision and experiment protocol
+- Any excluded cases and the reason they were excluded
+
+Useful files:
+
+- [`RESEARCH_NOTES.md`](RESEARCH_NOTES.md) — research context and limitations
+- [`research-results/README.md`](research-results/README.md) — result artifact guide
+- [`research-results/strategy_timings.csv`](research-results/strategy_timings.csv) — exported timing table, if included in this checkout
+- [`research-results/experiment_bundle.json`](research-results/experiment_bundle.json) — machine-readable experiment bundle, if included in this checkout
+- [`DEPLOYMENT.md`](DEPLOYMENT.md) — GitHub, Vercel, and backend deployment notes
+
+If a listed result file is absent from a particular release, use the files actually present in `research-results/`; do not infer results from filenames.
+
+## Architecture
+
+```text
+React + TypeScript + Vite
+          │ HTTP / JSON
+          ▼
+     FastAPI service
+          │
+          ├── Workload generation
+          ├── Reference implementation
+          ├── CPU candidate strategies
+          ├── Correctness checks
+          ├── Repeated timing
+          └── Result serialization
+```
+
+The frontend is a visualization and experiment-control layer. The Python backend performs the CPU workload generation, correctness checks, and timing.
+
+## API overview
+
+The local API includes endpoints for health/status, defaults, workload preview, and experiment execution. See the interactive API docs at `/docs` when the backend is running for the current request and response schemas.
+
+Example workload configuration:
 
 ```json
 {
@@ -94,79 +270,60 @@ Example request:
 }
 ```
 
-## How the experiment works
+The exact accepted values and validation rules are defined by the backend schema in the checked-out version.
 
-1. Generate deterministic float32 features and destination voxel IDs.
-2. Run the sequential reference and compute its output.
-3. Execute each candidate and compare against the reference using explicit numerical tolerances.
-4. Do not accept timing as a valid performance result if correctness fails.
-5. Warm up each strategy, measure repeated runs, and report the median.
-6. Calculate voxel occupancy statistics and preserve the input configuration and seed.
+## Deployment
 
-Floating-point accumulation order can differ between implementations. This project uses `rtol=1e-4` and `atol=1e-4` for candidate comparisons; that is a portable exploratory tolerance, not a substitute for a target-specific correctness contract.
+The intended hosted architecture is:
 
-## Interpreting the strategies
+- **Vercel** for the Vite frontend
+- **Render** for the FastAPI backend
 
-- **Sequential reference** is intentionally simple and easy to inspect. It is not expected to be fast in Python.
-- **NumPy add.at** performs scatter-style accumulation in compiled NumPy code.
-- **Sort + segmented reduction** sorts entries by destination and reduces each occupied segment. Sorting has overhead and may or may not pay off; this is exactly what experiments should establish.
+The frontend needs the deployed API base URL, and the backend must allow the deployed frontend origin through CORS. Follow [`DEPLOYMENT.md`](DEPLOYMENT.md) for environment variables and deployment steps.
 
-Results vary by CPU, Python/NumPy versions, input sizes, and system load. The result records the available software/OS/machine metadata. Do not generalize a single timing to all workloads. A local output-size guardrail rejects dense output tensors larger than 15,000,000 float32 elements.
+A deployment is not verified merely because a build succeeds. Test the live end-to-end workflow, including API health, an experiment, correctness status, and exports. Do not expose private credentials in the repository.
 
-## Repository layout
+## Current limitations
 
-```text
-voxelpool-explorer/
-├── backend/
-│   ├── app/
-│   │   ├── main.py
-│   │   ├── voxelpool.py
-│   │   └── workloads.py
-│   ├── tests/
-│   │   └── test_voxelpool.py
-│   └── requirements.txt
-├── frontend/
-│   ├── src/
-│   │   ├── App.tsx
-│   │   ├── main.tsx
-│   │   └── styles.css
-│   ├── index.html
-│   ├── package.json
-│   ├── tsconfig.json
-│   └── vite.config.ts
-├── RESEARCH_NOTES.md
-├── start_windows.bat
-└── start_unix.sh
-```
+- CPU-only Python/NumPy measurements; no verified CUDA, NPU, or Quadric backend.
+- Synthetic workloads do not establish performance on real-world perception traces.
+- Strategy-selection conclusions require larger, repeated held-out evaluations.
+- Measurements are sensitive to hardware, software versions, and system load.
+- The browser's local history is not a substitute for a shared experiment database.
+- The hosted frontend requires a separately deployed API for real benchmark execution.
 
-## Research references and design lineage
+## Roadmap
 
-This project borrows evaluation principles—not code wholesale—from:
-- [KernelBench](https://github.com/ScalingIntelligence/KernelBench): reference/candidate comparison, correctness gates, repeated measurement, structured scoring.
-- [Kernel Tuner](https://github.com/KernelTuner/kernel_tuner): configuration-based experiments and result recording.
-- [TritonBench](https://github.com/meta-pytorch/tritonbench): reusable operator benchmark cases.
-- [Starlight](https://github.com/albertozeni/starlight): evidence-led performance analysis.
-- [Quadric SDK](https://quadric.ai/sdk) and [custom-op tutorials](https://app.quadric.ai/docs/latest/chimera-software-user-guide/tutorials-model-demos/custom-op-tutorials/index): target-specific follow-up path.
+- [ ] Validate workload import/replay with documented application-derived traces
+- [ ] Expand repeated and grouped held-out evaluation of strategy selection
+- [ ] Add richer numerical-error diagnostics and edge-case tests
+- [ ] Add persistent research projects and run metadata
+- [ ] Improve benchmark isolation and uncertainty reporting
+- [ ] Verify a target-specific accelerator backend only when the official SDK and execution environment are available
 
-This is an independent research prototype, not affiliated with or endorsed by those projects.
+## Related work
 
-## Next research steps
+The project takes inspiration from public benchmarking and tuning workflows; it does not claim to reproduce or be affiliated with these projects.
 
-1. Verify Quadric DevStudio access and run its official voxel-pooling custom-op tutorial unchanged.
-2. Record the exact operator contract and target toolchain version.
-3. Add a separate Quadric CCL adapter only when the SDK and simulator are available.
-4. Keep CPU, CUDA, and Quadric results in separate measurement categories.
-5. Test on held-out shapes and distributions before making claims about a workload-aware selector.
+- [KernelBench](https://github.com/ScalingIntelligence/KernelBench) — kernel performance evaluation with correctness checks.
+- [Kernel Tuner](https://github.com/KernelTuner/kernel_tuner) — configurable kernel tuning and measurement.
+- [TritonBench](https://github.com/meta-pytorch/tritonbench) — operator benchmarking infrastructure.
+- [Quadric SDK](https://quadric.ai/sdk) — potential future target-specific development path, subject to access and validation.
 
-## Troubleshooting
+## Contributing
 
-- **Port 8000 is busy:** stop the process using it, or change the API port and `VITE_API_BASE` together.
-- **Port 5173 is busy:** Vite will suggest another port; use the URL shown in the terminal.
-- **PowerShell blocks activation:** use `py -m pip install -r backend/requirements.txt` and `py -m uvicorn app.main:app` from the backend folder, or use Command Prompt.
-- **Frontend says API offline:** make sure the backend terminal shows `Uvicorn running on http://127.0.0.1:8000`.
+Issues and pull requests are welcome. For benchmark-related contributions, please include the workload configuration, random seed, correctness results, measurement procedure, and environment details. Avoid submitting performance claims without reproducible data.
 
-## Publish to GitHub and deploy live
+## License
 
-See [`DEPLOYMENT.md`](DEPLOYMENT.md) for the tested deployment architecture: Vercel hosts the Vite frontend, while Render hosts the FastAPI API. The backend is intentionally separate because benchmark sweeps use in-memory job state and are not a good fit for a serverless-only API. `render.yaml`, `frontend/vercel.json`, and `frontend/.env.example` are included.
+See [`LICENSE`](LICENSE).
 
-Frontend dependency installation did not complete in the authoring environment due to a network timeout. Run `npm install` in `frontend/` in a network-enabled environment and commit the generated `package-lock.json` before the first deployment for reproducible dependency resolution.
+## Acknowledgements
+
+Built as an independent research and engineering project to explore reproducible benchmarking and workload-aware performance analysis.
+
+<div align="center">
+
+**Correctness first. Measure carefully. Publish reproducibly.**
+
+</div>
