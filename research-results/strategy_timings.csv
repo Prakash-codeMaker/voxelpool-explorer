@@ -1,0 +1,217 @@
+case_index,pattern,points,channels,grid_size,seed,occupancy_percent,collision_rate_percent,max_points_per_voxel,strategy_id,strategy_label,correct,median_ms,min_ms,max_ms,p95_ms,stddev_ms,cv_percent,speedup_vs_python_reference
+1,uniform,128,4,8,42,22.6562,9.375,2,python_reference,Sequential reference,True,0.0894,0.088,0.1193,0.1134,0.0136,14.362,1.0
+1,uniform,128,4,8,42,22.6562,9.375,2,numpy_add_at,NumPy scatter (add.at),True,0.0089,0.0081,0.0095,0.0094,0.0006,6.451,10.0449
+1,uniform,128,4,8,42,22.6562,9.375,2,sort_segmented,Sort + segmented reduce,True,0.02,0.0178,0.0231,0.023,0.0024,11.744,4.47
+2,uniform,128,4,8,43,22.2656,10.9375,2,python_reference,Sequential reference,True,0.0899,0.0892,0.253,0.2252,0.0712,56.017,1.0
+2,uniform,128,4,8,43,22.2656,10.9375,2,numpy_add_at,NumPy scatter (add.at),True,0.0086,0.0083,0.0097,0.0097,0.0006,6.927,10.4535
+2,uniform,128,4,8,43,22.2656,10.9375,2,sort_segmented,Sort + segmented reduce,True,0.0192,0.0173,0.0236,0.0233,0.0026,12.907,4.6823
+3,uniform,128,4,16,42,3.1006,0.7812,2,python_reference,Sequential reference,True,0.0892,0.0885,0.1183,0.1125,0.0131,13.828,1.0
+3,uniform,128,4,16,42,3.1006,0.7812,2,numpy_add_at,NumPy scatter (add.at),True,0.0091,0.0089,0.0102,0.0101,0.0006,6.254,9.8022
+3,uniform,128,4,16,42,3.1006,0.7812,2,sort_segmented,Sort + segmented reduce,True,0.0208,0.0182,0.0215,0.0214,0.0015,7.656,4.2885
+4,uniform,128,4,16,43,3.125,0.0,1,python_reference,Sequential reference,True,0.091,0.0896,0.1925,0.1722,0.0457,41.228,1.0
+4,uniform,128,4,16,43,3.125,0.0,1,numpy_add_at,NumPy scatter (add.at),True,0.0092,0.0085,0.0099,0.0098,0.0006,6.046,9.8913
+4,uniform,128,4,16,43,3.125,0.0,1,sort_segmented,Sort + segmented reduce,True,0.0192,0.017,0.0231,0.0224,0.0023,11.791,4.7396
+5,uniform,128,16,8,42,21.875,12.5,2,python_reference,Sequential reference,True,0.0905,0.0897,0.1992,0.1783,0.0482,42.703,1.0
+5,uniform,128,16,8,42,21.875,12.5,2,numpy_add_at,NumPy scatter (add.at),True,0.0227,0.0222,0.0549,0.0486,0.0144,49.244,3.9868
+5,uniform,128,16,8,42,21.875,12.5,2,sort_segmented,Sort + segmented reduce,True,0.0372,0.0265,0.1283,0.1109,0.043,82.239,2.4328
+6,uniform,128,16,8,43,22.4609,10.1562,2,python_reference,Sequential reference,True,0.0899,0.0894,0.1383,0.1288,0.0216,21.686,1.0
+6,uniform,128,16,8,43,22.4609,10.1562,2,numpy_add_at,NumPy scatter (add.at),True,0.0225,0.0219,0.0227,0.0227,0.0003,1.442,3.9956
+6,uniform,128,16,8,43,22.4609,10.1562,2,sort_segmented,Sort + segmented reduce,True,0.0268,0.0234,0.0361,0.0348,0.005,17.853,3.3545
+7,uniform,128,16,16,42,3.0762,1.5625,2,python_reference,Sequential reference,True,0.0919,0.0916,0.0925,0.0925,0.0004,0.435,1.0
+7,uniform,128,16,16,42,3.0762,1.5625,2,numpy_add_at,NumPy scatter (add.at),True,0.0248,0.024,0.0823,0.071,0.0258,71.231,3.7056
+7,uniform,128,16,16,42,3.0762,1.5625,2,sort_segmented,Sort + segmented reduce,True,0.0294,0.0251,0.0552,0.0503,0.0124,37.0,3.1259
+8,uniform,128,16,16,43,3.125,0.0,1,python_reference,Sequential reference,True,0.1032,0.0919,0.1255,0.1218,0.0137,13.168,1.0
+8,uniform,128,16,16,43,3.125,0.0,1,numpy_add_at,NumPy scatter (add.at),True,0.0244,0.0238,0.0249,0.0249,0.0004,1.739,4.2295
+8,uniform,128,16,16,43,3.125,0.0,1,sort_segmented,Sort + segmented reduce,True,0.0291,0.0258,0.0332,0.0329,0.0032,10.881,3.5464
+9,uniform,512,4,8,42,65.0391,34.9609,5,python_reference,Sequential reference,True,0.356,0.355,0.4217,0.4088,0.0294,7.965,1.0
+9,uniform,512,4,8,42,65.0391,34.9609,5,numpy_add_at,NumPy scatter (add.at),True,0.0267,0.0261,0.03,0.0294,0.0016,5.76,13.3333
+9,uniform,512,4,8,42,65.0391,34.9609,5,sort_segmented,Sort + segmented reduce,True,0.0597,0.0406,0.1071,0.0977,0.0261,41.581,5.9631
+10,uniform,512,4,8,43,63.6719,36.3281,5,python_reference,Sequential reference,True,0.3561,0.3558,0.3918,0.3892,0.0167,4.536,1.0
+10,uniform,512,4,8,43,63.6719,36.3281,5,numpy_add_at,NumPy scatter (add.at),True,0.0264,0.0262,0.0272,0.0271,0.0004,1.556,13.4886
+10,uniform,512,4,8,43,63.6719,36.3281,5,sort_segmented,Sort + segmented reduce,True,0.0458,0.0436,0.0613,0.0603,0.0078,15.441,7.7751
+11,uniform,512,4,16,42,11.8164,5.4688,3,python_reference,Sequential reference,True,0.3596,0.3568,0.4383,0.4275,0.035,9.235,1.0
+11,uniform,512,4,16,42,11.8164,5.4688,3,numpy_add_at,NumPy scatter (add.at),True,0.0269,0.0268,0.0278,0.0277,0.0004,1.608,13.368
+11,uniform,512,4,16,42,11.8164,5.4688,3,sort_segmented,Sort + segmented reduce,True,0.0511,0.0473,0.0642,0.063,0.0071,13.28,7.0372
+12,uniform,512,4,16,43,11.8408,5.2734,3,python_reference,Sequential reference,True,0.3776,0.3549,0.3874,0.3856,0.014,3.778,1.0
+12,uniform,512,4,16,43,11.8408,5.2734,3,numpy_add_at,NumPy scatter (add.at),True,0.0272,0.0269,0.0287,0.0285,0.0007,2.636,13.8824
+12,uniform,512,4,16,43,11.8408,5.2734,3,sort_segmented,Sort + segmented reduce,True,0.044,0.0423,0.053,0.0518,0.0042,9.226,8.5818
+13,uniform,512,16,8,42,62.1094,37.8906,5,python_reference,Sequential reference,True,0.3611,0.3585,0.5106,0.4838,0.0658,16.719,1.0
+13,uniform,512,16,8,42,62.1094,37.8906,5,numpy_add_at,NumPy scatter (add.at),True,0.0797,0.0796,0.0941,0.0913,0.0064,7.759,4.5307
+13,uniform,512,16,8,42,62.1094,37.8906,5,sort_segmented,Sort + segmented reduce,True,0.0711,0.0652,0.0876,0.0844,0.0084,11.428,5.0788
+14,uniform,512,16,8,43,61.5234,38.4766,5,python_reference,Sequential reference,True,0.3609,0.358,0.3913,0.3882,0.0143,3.87,1.0
+14,uniform,512,16,8,43,61.5234,38.4766,5,numpy_add_at,NumPy scatter (add.at),True,0.082,0.0811,0.0964,0.0961,0.0077,8.888,4.4012
+14,uniform,512,16,8,43,61.5234,38.4766,5,sort_segmented,Sort + segmented reduce,True,0.0709,0.0698,0.075,0.0748,0.0023,3.136,5.0903
+15,uniform,512,16,16,42,11.6943,6.4453,3,python_reference,Sequential reference,True,0.3814,0.3595,0.5531,0.5222,0.0811,19.727,1.0
+15,uniform,512,16,16,42,11.6943,6.4453,3,numpy_add_at,NumPy scatter (add.at),True,0.0827,0.0817,0.0886,0.0875,0.0028,3.409,4.6119
+15,uniform,512,16,16,42,11.6943,6.4453,3,sort_segmented,Sort + segmented reduce,True,0.082,0.0712,0.0862,0.0857,0.0071,8.939,4.6512
+16,uniform,512,16,16,43,11.4746,8.2031,3,python_reference,Sequential reference,True,0.3667,0.3647,0.3905,0.3894,0.0123,3.29,1.0
+16,uniform,512,16,16,43,11.4746,8.2031,3,numpy_add_at,NumPy scatter (add.at),True,0.0838,0.082,0.1002,0.1002,0.0096,10.656,4.3759
+16,uniform,512,16,16,43,11.4746,8.2031,3,sort_segmented,Sort + segmented reduce,True,0.0743,0.0719,0.0792,0.0786,0.003,3.969,4.9354
+17,uniform,1200,4,8,42,90.0391,61.5833,8,python_reference,Sequential reference,True,0.8641,0.8578,0.8894,0.8891,0.0156,1.794,1.0
+17,uniform,1200,4,8,42,90.0391,61.5833,8,numpy_add_at,NumPy scatter (add.at),True,0.0592,0.0577,0.0644,0.0635,0.0026,4.326,14.5963
+17,uniform,1200,4,8,42,90.0391,61.5833,8,sort_segmented,Sort + segmented reduce,True,0.0819,0.0711,0.1032,0.0993,0.013,15.834,10.5507
+18,uniform,1200,4,8,43,91.9922,60.75,8,python_reference,Sequential reference,True,0.8602,0.8514,1.0768,1.0409,0.0965,10.629,1.0
+18,uniform,1200,4,8,43,91.9922,60.75,8,numpy_add_at,NumPy scatter (add.at),True,0.0601,0.0587,0.0612,0.061,0.0009,1.58,14.3128
+18,uniform,1200,4,8,43,91.9922,60.75,8,sort_segmented,Sort + segmented reduce,True,0.0852,0.0837,0.115,0.1093,0.0136,14.919,10.0962
+19,uniform,1200,4,16,42,25.6104,12.5833,3,python_reference,Sequential reference,True,0.8607,0.833,0.9545,0.943,0.0478,5.433,1.0
+19,uniform,1200,4,16,42,25.6104,12.5833,3,numpy_add_at,NumPy scatter (add.at),True,0.0595,0.0582,0.1547,0.1358,0.0427,54.412,14.4655
+19,uniform,1200,4,16,42,25.6104,12.5833,3,sort_segmented,Sort + segmented reduce,True,0.0962,0.0897,0.1128,0.1121,0.0103,10.305,8.947
+20,uniform,1200,4,16,43,25.1465,14.1667,3,python_reference,Sequential reference,True,0.8612,0.8552,0.8978,0.8947,0.0186,2.139,1.0
+20,uniform,1200,4,16,43,25.1465,14.1667,3,numpy_add_at,NumPy scatter (add.at),True,0.0592,0.0586,0.0752,0.0723,0.0071,11.413,14.5473
+20,uniform,1200,4,16,43,25.1465,14.1667,3,sort_segmented,Sort + segmented reduce,True,0.0868,0.0779,0.0972,0.0966,0.0079,8.933,9.9217
+21,uniform,1200,16,8,42,88.4766,62.25,8,python_reference,Sequential reference,True,0.8727,0.8703,0.9614,0.9443,0.0397,4.461,1.0
+21,uniform,1200,16,8,42,88.4766,62.25,8,numpy_add_at,NumPy scatter (add.at),True,0.183,0.1814,0.2062,0.206,0.0129,6.72,4.7689
+21,uniform,1200,16,8,42,88.4766,62.25,8,sort_segmented,Sort + segmented reduce,True,0.1302,0.1158,0.1463,0.1454,0.0119,8.943,6.7028
+22,uniform,1200,16,8,43,89.2578,61.9167,9,python_reference,Sequential reference,True,0.8708,0.8642,0.9439,0.9321,0.0334,3.772,1.0
+22,uniform,1200,16,8,43,89.2578,61.9167,9,numpy_add_at,NumPy scatter (add.at),True,0.1832,0.1826,0.21,0.2053,0.0119,6.271,4.7533
+22,uniform,1200,16,8,43,89.2578,61.9167,9,sort_segmented,Sort + segmented reduce,True,0.1393,0.1178,0.1962,0.1851,0.0302,20.87,6.2513
+23,uniform,1200,16,16,42,25.1953,14.0,3,python_reference,Sequential reference,True,0.9057,0.8517,0.9334,0.9279,0.0334,3.738,1.0
+23,uniform,1200,16,16,42,25.1953,14.0,3,numpy_add_at,NumPy scatter (add.at),True,0.2028,0.1848,0.2506,0.2417,0.0266,12.901,4.466
+23,uniform,1200,16,16,42,25.1953,14.0,3,sort_segmented,Sort + segmented reduce,True,0.1662,0.1518,0.178,0.1771,0.0103,6.168,5.4495
+24,uniform,1200,16,16,43,25.293,13.6667,3,python_reference,Sequential reference,True,0.9241,0.8947,0.9527,0.9472,0.0221,2.4,1.0
+24,uniform,1200,16,16,43,25.293,13.6667,3,numpy_add_at,NumPy scatter (add.at),True,0.1874,0.1833,0.2315,0.2253,0.0203,10.282,4.9312
+24,uniform,1200,16,16,43,25.293,13.6667,3,sort_segmented,Sort + segmented reduce,True,0.167,0.156,0.1739,0.1737,0.0071,4.259,5.5335
+25,hotspot,128,4,8,42,5.2734,78.9062,16,python_reference,Sequential reference,True,0.087,0.0868,0.0886,0.0883,0.0008,0.859,1.0
+25,hotspot,128,4,8,42,5.2734,78.9062,16,numpy_add_at,NumPy scatter (add.at),True,0.0086,0.0083,0.0332,0.0283,0.0111,82.529,10.1163
+25,hotspot,128,4,8,42,5.2734,78.9062,16,sort_segmented,Sort + segmented reduce,True,0.0164,0.0145,0.0196,0.0195,0.0024,14.148,5.3049
+26,hotspot,128,4,8,43,5.4688,78.125,18,python_reference,Sequential reference,True,0.087,0.0863,0.0879,0.0878,0.0006,0.738,1.0
+26,hotspot,128,4,8,43,5.4688,78.125,18,numpy_add_at,NumPy scatter (add.at),True,0.0081,0.0079,0.0091,0.0089,0.0005,5.656,10.7407
+26,hotspot,128,4,8,43,5.4688,78.125,18,sort_segmented,Sort + segmented reduce,True,0.0157,0.0145,0.0206,0.02,0.0025,14.95,5.5414
+27,hotspot,128,4,16,42,1.9287,38.2812,4,python_reference,Sequential reference,True,0.0886,0.088,0.1933,0.1842,0.0479,39.518,1.0
+27,hotspot,128,4,16,42,1.9287,38.2812,4,numpy_add_at,NumPy scatter (add.at),True,0.009,0.0087,0.01,0.01,0.0006,6.524,9.8444
+27,hotspot,128,4,16,42,1.9287,38.2812,4,sort_segmented,Sort + segmented reduce,True,0.021,0.0182,0.0322,0.0305,0.0057,24.841,4.219
+28,hotspot,128,4,16,43,1.9775,36.7188,5,python_reference,Sequential reference,True,0.0882,0.0879,0.0894,0.0893,0.0006,0.685,1.0
+28,hotspot,128,4,16,43,1.9775,36.7188,5,numpy_add_at,NumPy scatter (add.at),True,0.0089,0.0085,0.0098,0.0097,0.0005,5.633,9.9101
+28,hotspot,128,4,16,43,1.9775,36.7188,5,sort_segmented,Sort + segmented reduce,True,0.0186,0.0182,0.0203,0.02,0.0009,4.559,4.7419
+29,hotspot,128,16,8,42,5.4688,78.125,16,python_reference,Sequential reference,True,0.0889,0.0883,0.0894,0.0894,0.0005,0.548,1.0
+29,hotspot,128,16,8,42,5.4688,78.125,16,numpy_add_at,NumPy scatter (add.at),True,0.0219,0.0216,0.0226,0.0225,0.0004,1.666,4.0594
+29,hotspot,128,16,8,42,5.4688,78.125,16,sort_segmented,Sort + segmented reduce,True,0.0188,0.0177,0.0268,0.0264,0.0042,19.852,4.7287
+30,hotspot,128,16,8,43,5.8594,76.5625,13,python_reference,Sequential reference,True,0.0883,0.0875,0.1231,0.1162,0.0156,16.426,1.0
+30,hotspot,128,16,8,43,5.8594,76.5625,13,numpy_add_at,NumPy scatter (add.at),True,0.0223,0.0218,0.0225,0.0225,0.0003,1.284,3.9596
+30,hotspot,128,16,8,43,5.8594,76.5625,13,sort_segmented,Sort + segmented reduce,True,0.0183,0.0174,0.0214,0.0213,0.0019,9.627,4.8251
+31,hotspot,128,16,16,42,1.8555,40.625,5,python_reference,Sequential reference,True,0.0904,0.0899,0.1109,0.1069,0.0092,9.685,1.0
+31,hotspot,128,16,16,42,1.8555,40.625,5,numpy_add_at,NumPy scatter (add.at),True,0.0249,0.024,0.0252,0.0252,0.0006,2.396,3.6305
+31,hotspot,128,16,16,42,1.8555,40.625,5,sort_segmented,Sort + segmented reduce,True,0.0258,0.0238,0.0303,0.0298,0.0025,9.443,3.5039
+32,hotspot,128,16,16,43,2.002,35.9375,5,python_reference,Sequential reference,True,0.091,0.09,0.1147,0.1101,0.0107,11.197,1.0
+32,hotspot,128,16,16,43,2.002,35.9375,5,numpy_add_at,NumPy scatter (add.at),True,0.0253,0.0245,0.0264,0.0262,0.0008,3.168,3.5968
+32,hotspot,128,16,16,43,2.002,35.9375,5,sort_segmented,Sort + segmented reduce,True,0.0266,0.0249,0.0298,0.0296,0.0022,8.145,3.4211
+33,hotspot,512,4,8,42,16.0156,83.9844,57,python_reference,Sequential reference,True,0.3532,0.3478,0.3705,0.3705,0.0108,2.999,1.0
+33,hotspot,512,4,8,42,16.0156,83.9844,57,numpy_add_at,NumPy scatter (add.at),True,0.0268,0.0261,0.0273,0.0273,0.0005,1.919,13.1791
+33,hotspot,512,4,8,42,16.0156,83.9844,57,sort_segmented,Sort + segmented reduce,True,0.0312,0.0284,0.0359,0.0352,0.0028,8.821,11.3205
+34,hotspot,512,4,8,43,16.4062,83.5938,52,python_reference,Sequential reference,True,0.3575,0.3522,0.3788,0.3783,0.0121,3.329,1.0
+34,hotspot,512,4,8,43,16.4062,83.5938,52,numpy_add_at,NumPy scatter (add.at),True,0.0268,0.0263,0.0288,0.0287,0.0011,3.953,13.3396
+34,hotspot,512,4,8,43,16.4062,83.5938,52,sort_segmented,Sort + segmented reduce,True,0.0334,0.027,0.0347,0.0347,0.0033,10.452,10.7036
+35,hotspot,512,4,16,42,3.7598,69.9219,13,python_reference,Sequential reference,True,0.355,0.3501,0.3882,0.3844,0.0158,4.346,1.0
+35,hotspot,512,4,16,42,3.7598,69.9219,13,numpy_add_at,NumPy scatter (add.at),True,0.0275,0.0267,0.0418,0.0393,0.0064,21.036,12.9091
+35,hotspot,512,4,16,42,3.7598,69.9219,13,sort_segmented,Sort + segmented reduce,True,0.0398,0.0337,0.0446,0.0437,0.0046,11.881,8.9196
+36,hotspot,512,4,16,43,3.8818,68.9453,10,python_reference,Sequential reference,True,0.3567,0.3555,0.3781,0.3775,0.0112,3.085,1.0
+36,hotspot,512,4,16,43,3.8818,68.9453,10,numpy_add_at,NumPy scatter (add.at),True,0.0275,0.0268,0.0282,0.0281,0.0005,1.924,12.9709
+36,hotspot,512,4,16,43,3.8818,68.9453,10,sort_segmented,Sort + segmented reduce,True,0.0381,0.0326,0.0669,0.0612,0.0142,33.762,9.3622
+37,hotspot,512,16,8,42,14.6484,85.3516,53,python_reference,Sequential reference,True,0.3567,0.3505,0.471,0.4573,0.0514,13.284,1.0
+37,hotspot,512,16,8,42,14.6484,85.3516,53,numpy_add_at,NumPy scatter (add.at),True,0.0807,0.0791,0.1006,0.1002,0.0107,12.144,4.4201
+37,hotspot,512,16,8,42,14.6484,85.3516,53,sort_segmented,Sort + segmented reduce,True,0.0442,0.0377,0.0515,0.0504,0.0052,11.769,8.0701
+38,hotspot,512,16,8,43,19.3359,80.6641,52,python_reference,Sequential reference,True,0.3726,0.3553,0.4294,0.419,0.0303,8.021,1.0
+38,hotspot,512,16,8,43,19.3359,80.6641,52,numpy_add_at,NumPy scatter (add.at),True,0.0821,0.0818,0.0856,0.0851,0.0016,1.935,4.5384
+38,hotspot,512,16,8,43,19.3359,80.6641,52,sort_segmented,Sort + segmented reduce,True,0.0433,0.0413,0.0479,0.0477,0.0028,6.312,8.6051
+39,hotspot,512,16,16,42,3.6865,70.5078,11,python_reference,Sequential reference,True,0.3771,0.3562,0.3925,0.3896,0.015,4.013,1.0
+39,hotspot,512,16,16,42,3.6865,70.5078,11,numpy_add_at,NumPy scatter (add.at),True,0.0817,0.0813,0.0832,0.0831,0.0008,0.998,4.6157
+39,hotspot,512,16,16,42,3.6865,70.5078,11,sort_segmented,Sort + segmented reduce,True,0.0529,0.0485,0.0624,0.0606,0.0051,9.542,7.1285
+40,hotspot,512,16,16,43,4.2236,66.2109,11,python_reference,Sequential reference,True,0.3622,0.356,0.3772,0.3765,0.009,2.457,1.0
+40,hotspot,512,16,16,43,4.2236,66.2109,11,numpy_add_at,NumPy scatter (add.at),True,0.0811,0.081,0.0821,0.0821,0.0006,0.7,4.4661
+40,hotspot,512,16,16,43,4.2236,66.2109,11,sort_segmented,Sort + segmented reduce,True,0.0554,0.053,0.0615,0.0613,0.0039,6.884,6.5379
+41,hotspot,1200,4,8,42,28.9062,87.6667,120,python_reference,Sequential reference,True,0.8942,0.8427,0.9338,0.9305,0.0358,4.009,1.0
+41,hotspot,1200,4,8,42,28.9062,87.6667,120,numpy_add_at,NumPy scatter (add.at),True,0.0583,0.0575,0.059,0.059,0.0006,0.971,15.3379
+41,hotspot,1200,4,8,42,28.9062,87.6667,120,sort_segmented,Sort + segmented reduce,True,0.0677,0.0528,0.0708,0.0702,0.0087,13.827,13.2083
+42,hotspot,1200,4,8,43,32.0312,86.3333,121,python_reference,Sequential reference,True,0.8839,0.8435,0.9214,0.9143,0.0313,3.573,1.0
+42,hotspot,1200,4,8,43,32.0312,86.3333,121,numpy_add_at,NumPy scatter (add.at),True,0.0606,0.0579,0.181,0.1572,0.054,64.004,14.5858
+42,hotspot,1200,4,8,43,32.0312,86.3333,121,sort_segmented,Sort + segmented reduce,True,0.0639,0.0565,0.0678,0.0677,0.005,7.898,13.8326
+43,hotspot,1200,4,16,42,5.8838,79.9167,21,python_reference,Sequential reference,True,0.8669,0.8528,0.9555,0.9503,0.0478,5.363,1.0
+43,hotspot,1200,4,16,42,5.8838,79.9167,21,numpy_add_at,NumPy scatter (add.at),True,0.0646,0.0594,0.1635,0.1484,0.0441,50.403,13.4195
+43,hotspot,1200,4,16,42,5.8838,79.9167,21,sort_segmented,Sort + segmented reduce,True,0.0756,0.0601,0.0842,0.0838,0.0096,12.938,11.4669
+44,hotspot,1200,4,16,43,6.3477,78.3333,21,python_reference,Sequential reference,True,0.8477,0.8299,0.9027,0.8953,0.0304,3.55,1.0
+44,hotspot,1200,4,16,43,6.3477,78.3333,21,numpy_add_at,NumPy scatter (add.at),True,0.0599,0.0595,0.0748,0.072,0.0066,10.491,14.1519
+44,hotspot,1200,4,16,43,6.3477,78.3333,21,sort_segmented,Sort + segmented reduce,True,0.0788,0.0662,0.1125,0.106,0.0185,22.778,10.7576
+45,hotspot,1200,16,8,42,30.6641,86.9167,119,python_reference,Sequential reference,True,0.8772,0.8343,1.0098,0.9895,0.0685,7.634,1.0
+45,hotspot,1200,16,8,42,30.6641,86.9167,119,numpy_add_at,NumPy scatter (add.at),True,0.1809,0.1806,0.2406,0.2323,0.026,13.226,4.8491
+45,hotspot,1200,16,8,42,30.6641,86.9167,119,sort_segmented,Sort + segmented reduce,True,0.0776,0.0737,0.094,0.0913,0.0078,9.712,11.3041
+46,hotspot,1200,16,8,43,31.6406,86.5,114,python_reference,Sequential reference,True,0.8594,0.8574,0.9009,0.8975,0.0197,2.261,1.0
+46,hotspot,1200,16,8,43,31.6406,86.5,114,numpy_add_at,NumPy scatter (add.at),True,0.1819,0.1809,0.2581,0.2431,0.0342,17.344,4.7246
+46,hotspot,1200,16,8,43,31.6406,86.5,114,sort_segmented,Sort + segmented reduce,True,0.0785,0.0704,0.0892,0.0879,0.007,8.728,10.9478
+47,hotspot,1200,16,16,42,6.1035,79.1667,21,python_reference,Sequential reference,True,0.866,0.8574,0.8833,0.8826,0.0118,1.357,1.0
+47,hotspot,1200,16,16,42,6.1035,79.1667,21,numpy_add_at,NumPy scatter (add.at),True,0.1835,0.1825,0.1857,0.1854,0.0013,0.713,4.7193
+47,hotspot,1200,16,16,42,6.1035,79.1667,21,sort_segmented,Sort + segmented reduce,True,0.0886,0.0785,0.096,0.0947,0.0063,7.145,9.7743
+48,hotspot,1200,16,16,43,6.3721,78.25,21,python_reference,Sequential reference,True,0.8618,0.8602,1.3646,1.2673,0.2235,23.157,1.0
+48,hotspot,1200,16,16,43,6.3721,78.25,21,numpy_add_at,NumPy scatter (add.at),True,0.1847,0.1821,0.1861,0.1861,0.0016,0.875,4.6659
+48,hotspot,1200,16,16,43,6.3721,78.25,21,sort_segmented,Sort + segmented reduce,True,0.0982,0.0931,0.1819,0.1779,0.0421,33.279,8.776
+49,unique,128,4,8,42,25.0,0.0,1,python_reference,Sequential reference,True,0.0898,0.0873,0.0924,0.0921,0.0022,2.472,1.0
+49,unique,128,4,8,42,25.0,0.0,1,numpy_add_at,NumPy scatter (add.at),True,0.0088,0.0081,0.0594,0.0493,0.0228,122.117,10.2045
+49,unique,128,4,8,42,25.0,0.0,1,sort_segmented,Sort + segmented reduce,True,0.0181,0.0173,0.0252,0.0242,0.0033,16.847,4.9613
+50,unique,128,4,8,43,25.0,0.0,1,python_reference,Sequential reference,True,0.0897,0.0879,0.1249,0.1182,0.016,16.566,1.0
+50,unique,128,4,8,43,25.0,0.0,1,numpy_add_at,NumPy scatter (add.at),True,0.0087,0.0085,0.0103,0.0101,0.0008,8.44,10.3103
+50,unique,128,4,8,43,25.0,0.0,1,sort_segmented,Sort + segmented reduce,True,0.023,0.0176,0.0973,0.0828,0.0343,94.494,3.9
+51,unique,128,4,16,42,3.125,0.0,1,python_reference,Sequential reference,True,0.0888,0.088,0.0897,0.0896,0.0008,0.872,1.0
+51,unique,128,4,16,42,3.125,0.0,1,numpy_add_at,NumPy scatter (add.at),True,0.0087,0.0086,0.0095,0.0094,0.0004,4.25,10.2069
+51,unique,128,4,16,42,3.125,0.0,1,sort_segmented,Sort + segmented reduce,True,0.0182,0.0175,0.0211,0.0206,0.0014,7.524,4.8791
+52,unique,128,4,16,43,3.125,0.0,1,python_reference,Sequential reference,True,0.0896,0.0889,0.0906,0.0905,0.0006,0.694,1.0
+52,unique,128,4,16,43,3.125,0.0,1,numpy_add_at,NumPy scatter (add.at),True,0.0092,0.0086,0.0102,0.01,0.0006,6.154,9.7391
+52,unique,128,4,16,43,3.125,0.0,1,sort_segmented,Sort + segmented reduce,True,0.0206,0.0178,0.0439,0.0392,0.011,45.274,4.3495
+53,unique,128,16,8,42,25.0,0.0,1,python_reference,Sequential reference,True,0.0906,0.09,0.2275,0.2002,0.0612,51.927,1.0
+53,unique,128,16,8,42,25.0,0.0,1,numpy_add_at,NumPy scatter (add.at),True,0.0231,0.0223,0.0242,0.0241,0.0007,3.159,3.9221
+53,unique,128,16,8,42,25.0,0.0,1,sort_segmented,Sort + segmented reduce,True,0.0276,0.0255,0.2488,0.2074,0.0981,132.83,3.2826
+54,unique,128,16,8,43,25.0,0.0,1,python_reference,Sequential reference,True,0.0904,0.0895,0.0912,0.0911,0.0007,0.768,1.0
+54,unique,128,16,8,43,25.0,0.0,1,numpy_add_at,NumPy scatter (add.at),True,0.0227,0.0223,0.0499,0.0444,0.0122,43.532,3.9824
+54,unique,128,16,8,43,25.0,0.0,1,sort_segmented,Sort + segmented reduce,True,0.0242,0.0229,0.027,0.0266,0.0015,6.202,3.7355
+55,unique,128,16,16,42,3.125,0.0,1,python_reference,Sequential reference,True,0.0925,0.0919,0.114,0.1102,0.0095,9.781,1.0
+55,unique,128,16,16,42,3.125,0.0,1,numpy_add_at,NumPy scatter (add.at),True,0.0247,0.0245,0.0267,0.0266,0.001,4.119,3.7449
+55,unique,128,16,16,42,3.125,0.0,1,sort_segmented,Sort + segmented reduce,True,0.0285,0.0258,0.0307,0.0304,0.0021,7.346,3.2456
+56,unique,128,16,16,43,3.125,0.0,1,python_reference,Sequential reference,True,0.093,0.0915,0.1,0.0988,0.0034,3.578,1.0
+56,unique,128,16,16,43,3.125,0.0,1,numpy_add_at,NumPy scatter (add.at),True,0.0278,0.0248,0.3086,0.2642,0.1225,129.482,3.3453
+56,unique,128,16,16,43,3.125,0.0,1,sort_segmented,Sort + segmented reduce,True,0.0303,0.027,0.0428,0.0414,0.0066,20.203,3.0693
+57,unique,256,4,8,42,50.0,0.0,1,python_reference,Sequential reference,True,0.1765,0.1745,0.1939,0.191,0.0079,4.389,1.0
+57,unique,256,4,8,42,50.0,0.0,1,numpy_add_at,NumPy scatter (add.at),True,0.0147,0.014,0.015,0.015,0.0004,2.79,12.0068
+57,unique,256,4,8,42,50.0,0.0,1,sort_segmented,Sort + segmented reduce,True,0.026,0.0243,0.0294,0.0289,0.002,7.742,6.7885
+58,unique,256,4,8,43,50.0,0.0,1,python_reference,Sequential reference,True,0.1765,0.1753,0.1996,0.195,0.0106,5.856,1.0
+58,unique,256,4,8,43,50.0,0.0,1,numpy_add_at,NumPy scatter (add.at),True,0.0142,0.014,0.0147,0.0147,0.0003,2.259,12.4296
+58,unique,256,4,8,43,50.0,0.0,1,sort_segmented,Sort + segmented reduce,True,0.0262,0.0245,0.0294,0.0293,0.0023,8.711,6.7366
+59,unique,256,4,16,42,6.25,0.0,1,python_reference,Sequential reference,True,0.1779,0.1755,0.2014,0.2002,0.0121,6.506,1.0
+59,unique,256,4,16,42,6.25,0.0,1,numpy_add_at,NumPy scatter (add.at),True,0.0152,0.0146,0.0155,0.0155,0.0004,2.727,11.7039
+59,unique,256,4,16,42,6.25,0.0,1,sort_segmented,Sort + segmented reduce,True,0.0277,0.025,0.0348,0.0334,0.004,14.092,6.4224
+60,unique,256,4,16,43,6.25,0.0,1,python_reference,Sequential reference,True,0.1762,0.176,0.177,0.1769,0.0004,0.236,1.0
+60,unique,256,4,16,43,6.25,0.0,1,numpy_add_at,NumPy scatter (add.at),True,0.0152,0.0144,0.0167,0.0165,0.0009,5.866,11.5921
+60,unique,256,4,16,43,6.25,0.0,1,sort_segmented,Sort + segmented reduce,True,0.0344,0.027,0.052,0.0506,0.0106,28.192,5.1221
+61,unique,256,16,8,42,50.0,0.0,1,python_reference,Sequential reference,True,0.1817,0.1784,0.1995,0.1987,0.01,5.338,1.0
+61,unique,256,16,8,42,50.0,0.0,1,numpy_add_at,NumPy scatter (add.at),True,0.0414,0.0405,0.0424,0.0423,0.0007,1.78,4.3889
+61,unique,256,16,8,42,50.0,0.0,1,sort_segmented,Sort + segmented reduce,True,0.0385,0.0362,0.0411,0.0409,0.002,5.074,4.7195
+62,unique,256,16,8,43,50.0,0.0,1,python_reference,Sequential reference,True,0.1781,0.1771,0.1976,0.1942,0.0087,4.751,1.0
+62,unique,256,16,8,43,50.0,0.0,1,numpy_add_at,NumPy scatter (add.at),True,0.042,0.0409,0.0444,0.0441,0.0013,3.168,4.2405
+62,unique,256,16,8,43,50.0,0.0,1,sort_segmented,Sort + segmented reduce,True,0.0407,0.0367,0.042,0.0418,0.0022,5.568,4.3759
+63,unique,256,16,16,42,6.25,0.0,1,python_reference,Sequential reference,True,0.1812,0.1808,0.219,0.2174,0.0189,9.687,1.0
+63,unique,256,16,16,42,6.25,0.0,1,numpy_add_at,NumPy scatter (add.at),True,0.0441,0.043,0.0454,0.0454,0.0011,2.398,4.1088
+63,unique,256,16,16,42,6.25,0.0,1,sort_segmented,Sort + segmented reduce,True,0.0442,0.0398,0.0498,0.0491,0.0042,9.418,4.0995
+64,unique,256,16,16,43,6.25,0.0,1,python_reference,Sequential reference,True,0.1803,0.1791,0.2182,0.2107,0.0171,9.116,1.0
+64,unique,256,16,16,43,6.25,0.0,1,numpy_add_at,NumPy scatter (add.at),True,0.0457,0.0438,0.0462,0.0461,0.0009,2.035,3.9453
+64,unique,256,16,16,43,6.25,0.0,1,sort_segmented,Sort + segmented reduce,True,0.0598,0.0415,0.1028,0.0951,0.0235,36.852,3.0151
+65,unique,512,4,8,42,100.0,0.0,1,python_reference,Sequential reference,True,0.3584,0.357,0.4441,0.4339,0.038,9.958,1.0
+65,unique,512,4,8,42,100.0,0.0,1,numpy_add_at,NumPy scatter (add.at),True,0.0265,0.0263,0.0303,0.0296,0.0017,6.133,13.5245
+65,unique,512,4,8,42,100.0,0.0,1,sort_segmented,Sort + segmented reduce,True,0.046,0.0414,0.0529,0.0522,0.0048,10.301,7.7913
+66,unique,512,4,8,43,100.0,0.0,1,python_reference,Sequential reference,True,0.3742,0.3578,0.4092,0.4035,0.0203,5.388,1.0
+66,unique,512,4,8,43,100.0,0.0,1,numpy_add_at,NumPy scatter (add.at),True,0.0264,0.0258,0.0288,0.0284,0.0012,4.328,14.1742
+66,unique,512,4,8,43,100.0,0.0,1,sort_segmented,Sort + segmented reduce,True,0.0445,0.0378,0.0513,0.051,0.0058,12.946,8.409
+67,unique,512,4,16,42,12.5,0.0,1,python_reference,Sequential reference,True,0.3615,0.3554,0.3778,0.377,0.01,2.725,1.0
+67,unique,512,4,16,42,12.5,0.0,1,numpy_add_at,NumPy scatter (add.at),True,0.0276,0.0272,0.0598,0.0533,0.0145,42.737,13.0978
+67,unique,512,4,16,42,12.5,0.0,1,sort_segmented,Sort + segmented reduce,True,0.0444,0.0395,0.0504,0.05,0.0043,9.501,8.1419
+68,unique,512,4,16,43,12.5,0.0,1,python_reference,Sequential reference,True,0.375,0.3606,0.3886,0.3871,0.0103,2.742,1.0
+68,unique,512,4,16,43,12.5,0.0,1,numpy_add_at,NumPy scatter (add.at),True,0.0277,0.0268,0.0285,0.0285,0.0007,2.485,13.5379
+68,unique,512,4,16,43,12.5,0.0,1,sort_segmented,Sort + segmented reduce,True,0.0447,0.0432,0.0492,0.0486,0.0024,5.263,8.3893
+69,unique,512,16,8,42,100.0,0.0,1,python_reference,Sequential reference,True,0.363,0.3607,0.3885,0.3868,0.0126,3.402,1.0
+69,unique,512,16,8,42,100.0,0.0,1,numpy_add_at,NumPy scatter (add.at),True,0.0802,0.079,0.0981,0.0946,0.0082,9.788,4.5262
+69,unique,512,16,8,42,100.0,0.0,1,sort_segmented,Sort + segmented reduce,True,0.0664,0.0649,0.0856,0.0834,0.0088,12.358,5.4669
+70,unique,512,16,8,43,100.0,0.0,1,python_reference,Sequential reference,True,0.3635,0.3618,0.4394,0.43,0.0336,8.764,1.0
+70,unique,512,16,8,43,100.0,0.0,1,numpy_add_at,NumPy scatter (add.at),True,0.0805,0.0799,0.097,0.094,0.0074,8.786,4.5155
+70,unique,512,16,8,43,100.0,0.0,1,sort_segmented,Sort + segmented reduce,True,0.0727,0.0671,0.0794,0.0786,0.005,6.872,5.0
+71,unique,512,16,16,42,12.5,0.0,1,python_reference,Sequential reference,True,0.3827,0.3635,0.4904,0.481,0.0555,13.546,1.0
+71,unique,512,16,16,42,12.5,0.0,1,numpy_add_at,NumPy scatter (add.at),True,0.0825,0.0822,0.1068,0.1021,0.0108,12.414,4.6388
+71,unique,512,16,16,42,12.5,0.0,1,sort_segmented,Sort + segmented reduce,True,0.0767,0.0717,0.0896,0.0885,0.0077,9.717,4.9896
+72,unique,512,16,16,43,12.5,0.0,1,python_reference,Sequential reference,True,0.3711,0.3635,0.385,0.3847,0.0104,2.781,1.0
+72,unique,512,16,16,43,12.5,0.0,1,numpy_add_at,NumPy scatter (add.at),True,0.0827,0.0824,0.1054,0.1013,0.01,11.466,4.4873
+72,unique,512,16,16,43,12.5,0.0,1,sort_segmented,Sort + segmented reduce,True,0.0767,0.0684,0.1491,0.1419,0.0347,36.158,4.8383
